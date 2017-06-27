@@ -69,44 +69,44 @@ ret = os.system(command)
 if ret != 0:
     print_error('make failed!')
 
-#
-# build the addall utility program
-#
-if os.path.exists('./addall.c') != True:
-    print_error('required file addall.c not found!')
-
-command = "gcc -g addall.c -o addall"
-print(command)
-ret = os.system(command)
-if ret != 0:
-    print_error('Failed to build addall utility!')
-
-#
-# check DBG, text, symbol table, and string table size.
-#
-if os.path.exists('./get-symtab-sizes') != True:
-    print_error('required file get-symtab-sizes not found!')
-
-os.system('rm -f sharedlib_section_info')
-command = "./get-symtab-sizes pynamic-pyMPI > sharedlib_section_info"
-print(command)
-ret = os.system(command)
-if ret != 0:
-    print_error('Failed to get executable statistics!')
-
-command = "tail -10 sharedlib_section_info"
-os.system(command)
-
-#
-os.system('rm -f sharedlib_section_info2')
-command = "./get-symtab-sizes pynamic-bigexe > sharedlib_section_info2"
-print(command)
-ret = os.system(command)
-if ret != 0:
-    print_error('Failed to get executable statistics!')
-
-command = "tail -10 sharedlib_section_info2"
-os.system(command)
+### #
+### # build the addall utility program
+### #
+### if os.path.exists('./addall.c') != True:
+###     print_error('required file addall.c not found!')
+### 
+### command = "gcc -g addall.c -o addall"
+### print(command)
+### ret = os.system(command)
+### if ret != 0:
+###     print_error('Failed to build addall utility!')
+### 
+### #
+### # check DBG, text, symbol table, and string table size.
+### #
+### if os.path.exists('./get-symtab-sizes') != True:
+###     print_error('required file get-symtab-sizes not found!')
+### 
+### os.system('rm -f sharedlib_section_info')
+### command = "./get-symtab-sizes pynamic-pyMPI > sharedlib_section_info"
+### print(command)
+### ret = os.system(command)
+### if ret != 0:
+###     print_error('Failed to get executable statistics!')
+### 
+### command = "tail -10 sharedlib_section_info"
+### os.system(command)
+### 
+### #
+### os.system('rm -f sharedlib_section_info2')
+### command = "./get-symtab-sizes pynamic-bigexe > sharedlib_section_info2"
+### print(command)
+### ret = os.system(command)
+### if ret != 0:
+###     print_error('Failed to get executable statistics!')
+### 
+### command = "tail -10 sharedlib_section_info2"
+### os.system(command)
 
 #
 #COPYRIGHT
