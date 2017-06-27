@@ -505,7 +505,7 @@ uninstall-libLIBRARIES:
 
 clean-libLIBRARIES:
 	-test -z "$(lib_LIBRARIES)" || rm -f $(lib_LIBRARIES)
-libpyMPI.a: $(libpyMPI_a_OBJECTS) $(libpyMPI_a_DEPENDENCIES) $(PYNAMIC_BIGEXE_OBJS)
+libpyMPI.a: $(libpyMPI_a_OBJECTS) $(libpyMPI_a_DEPENDENCIES) # $(PYNAMIC_BIGEXE_OBJS)
 	-rm -f libpyMPI.a
 	$(libpyMPI_a_AR) libpyMPI.a $(libpyMPI_a_OBJECTS) $(libpyMPI_a_LIBADD)
 	$(RANLIB) libpyMPI.a
@@ -542,7 +542,7 @@ pyMPI$(EXEEXT): $(pyMPI_OBJECTS) $(pyMPI_DEPENDENCIES)
 	@rm -f pynamic-bigexe$(EXEEXT)
 	$(LINK) -o $@ $(pyMPI_LDFLAGS) $(pyMPI_OBJECTS) $(pyMPI_LDADD) $(LIBS)
 	$(LINK) -o pynamic-pyMPI$(EXEEXT) $(pyMPI_LDFLAGS) $(pyMPI_OBJECTS) $(pyMPI_LDADD) $(LIBS) $(PYNAMICLIBS)
-	$(LINK) -o pynamic-bigexe$(EXEEXT) $(pyMPI_LDFLAGS) $(pyMPI_OBJECTS) $(pyMPI_LDADD) $(LIBS) $(PYNAMICLIBS) $(PYNAMIC_BIGEXE_OBJS)
+#   $(LINK) -o pynamic-bigexe$(EXEEXT) $(pyMPI_LDFLAGS) $(pyMPI_OBJECTS) $(pyMPI_LDADD) $(LIBS) $(PYNAMICLIBS) $(PYNAMIC_BIGEXE_OBJS)
 install-binSCRIPTS: $(bin_SCRIPTS)
 	@$(NORMAL_INSTALL)
 	test -z "$(bindir)" || $(mkdir_p) "$(DESTDIR)$(bindir)"
