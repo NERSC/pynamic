@@ -197,6 +197,7 @@ def compile_file(file_prefix, i, num_utility_files, include_dir, CC):
     cwd = os.getcwd()
     outfile = file_prefix + '.so'
     command = '%s -g -fPIC -shared' %(CC)
+    command += ' -o ' + outfile + ' ' + filename
     if file_prefix.find('module') != -1:
         command += ' -I%s' %(include_dir)
         command += ' -Wl,-rpath=' + cwd + ' -L' + cwd
@@ -205,7 +206,6 @@ def compile_file(file_prefix, i, num_utility_files, include_dir, CC):
         for i in range(num_utility_files):
             command += ' -lutility' + str(i)
         
-    command += ' -o ' + outfile + ' ' + filename
     print(command)
     ret = os.system(command)
     if ret != 0:
